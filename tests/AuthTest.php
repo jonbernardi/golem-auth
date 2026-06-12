@@ -6,7 +6,6 @@ use Golem\Auth\Test\Example\Repository;
 use Golem\Auth\Storage\MemoryStorage;
 use Golem\Auth\Auth;
 use Golem\Auth\Test\Example\User;
-use PHPUnit\Framework\TestCase;
 
 class AuthTest extends TestCase
 {

@@ -3,7 +3,6 @@ namespace Golem\Auth\Test\Storage;
 
 use PHPUnit\Framework\TestCase;
 use Golem\Auth\Storage\MemoryStorage;
-use PHPUnit\Framework\TestCase;
 
 class MemoryStorageTest extends TestCase
 {
