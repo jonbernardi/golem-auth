@@ -3,6 +3,7 @@
     <testsuites>
         <testsuite name="Domain Dispatcher Test Suite">
             <directory>tests</directory>
+            <exclude>tests/Example</exclude>
         </testsuite>
     </testsuites>
     <source>
