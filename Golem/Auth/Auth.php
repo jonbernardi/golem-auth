@@ -54,8 +54,11 @@ class Auth implements AuthInterface
      * @return Authenticatable|null
      * @throws \RuntimeException
      */
-    public function user()
+    public function user(bool $force = false)
     {
+        if ($force) {
+            $this->user = null;
+        }
         if ($this->user === null && $this->loggedIn()) {
             $this->user = $this->repository->findUserById($this->id);
         }

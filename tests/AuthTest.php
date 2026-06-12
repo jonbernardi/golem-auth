@@ -6,6 +6,7 @@ use Golem\Auth\Test\Example\Repository;
 use Golem\Auth\Storage\MemoryStorage;
 use Golem\Auth\Auth;
 use Golem\Auth\Test\Example\User;
+use PHPUnit\Framework\TestCase;
 
 class AuthTest extends TestCase
 {
@@ -87,8 +88,33 @@ class AuthTest extends TestCase
     public function test_loading_invalid_user()
     {
         $this->expectException(\RuntimeException::class);
+
         // Force user id directly into storage
         $this->storage->store(6);
         $user = $this->auth->user();
+    }
+
+    public function test_user_is_cached_without_force()
+    {
+        $this->storage->store(1);
+        $user = $this->auth->user();
+        $this->assertInstanceOf('Golem\Auth\Test\Example\User', $user);
+        $same = $this->auth->user();
+        $this->assertSame($user, $same);
+    }
+
+    public function test_force_reloads_user()
+    {
+        $this->storage->store(1);
+        $user = $this->auth->user();
+        $this->assertInstanceOf('Golem\Auth\Test\Example\User', $user);
+        $reloaded = $this->auth->user(true);
+        $this->assertInstanceOf('Golem\Auth\Test\Example\User', $reloaded);
+        $this->assertNotSame($user, $reloaded);
+    }
+
+    public function test_force_returns_null_when_not_logged_in()
+    {
+        $this->assertNull($this->auth->user(true));
     }
 }

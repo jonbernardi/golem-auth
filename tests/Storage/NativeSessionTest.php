@@ -3,6 +3,7 @@ namespace Golem\Auth\Test\Storage;
 
 use PHPUnit\Framework\TestCase;
 use Golem\Auth\Storage\NativeSession;
+use PHPUnit\Framework\TestCase;
 
 class NativeSessionTest extends TestCase
 {

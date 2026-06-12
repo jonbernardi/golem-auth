@@ -2,12 +2,12 @@
 <phpunit bootstrap="vendor/autoload.php" colors="true">
     <testsuites>
         <testsuite name="Domain Dispatcher Test Suite">
-            <directory>tests</directory>
+            <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
     <source>
         <include>
-            <directory>Golem</directory>
+            <directory suffix=".php">Golem</directory>
         </include>
     </source>
 </phpunit>
